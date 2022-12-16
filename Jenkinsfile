@@ -34,7 +34,7 @@ pipeline {
 //		}
 		stage("QAT Testing") {
 			steps {
-				sh 'sudo docker rm -f \$(sudo docker ps -a -q)'
+//				sh 'sudo docker rm -f $(sudo docker ps -a -q)'
 				sh 'sudo docker run -dit -p 8080:8080 karmanshu/pipeline-java:$BUILD_TAG'
 				}
 			}
@@ -57,6 +57,7 @@ pipeline {
 		stage("Prod Env") {
 			steps {
 			 sshagent(['ubuntu']) {
+//			    sh 'sudo docker rm -f $(sudo docker ps -a -q)'
 			    sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.3.120 sudo docker rm -f $(sudo docker ps -a -q)' 
 	                    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.3.120 sudo docker run  -d  -p  49153:8080  karmanshu/javatest-app:$BUILD_TAG"
 				}
