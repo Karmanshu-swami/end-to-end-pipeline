@@ -34,7 +34,7 @@ pipeline {
 //		}
 		stage("QAT Testing") {
 			steps {
-//				sh 'sudo docker rm -f $(sudo docker ps -a -q)'
+				sh 'sudo docker rm -f $(sudo docker ps -a -q)'
 				sh 'sudo docker run -dit -p 8080:8080 karmanshu/pipeline-java:$BUILD_TAG'
 				}
 			}
