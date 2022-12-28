@@ -57,7 +57,7 @@ pipeline {
 		stage("Prod Env") {
 			steps {
 			 sshagent(['ubuntu-jenkins-slave']) {
-	                    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.126.20.221 sudo docker run  -d  -p  49153:8080  karmanshu/javatest-app:$BUILD_TAG"
+	                    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.126.20.221 sudo docker run  -d  -p  49153:8080  karmanshu/pipeline-java:jenkins-end-to-end-pipeline-$BUILD_TAG"
 				}
 			}
 		}
