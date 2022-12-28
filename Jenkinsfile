@@ -26,8 +26,8 @@ pipeline {
 //		stage("Docker Hub") {
 //			steps {
 //			withCredentials([string(credentialsId: 'docker_hub_passwd', variable: 'docker_hub_password_var')]) {
-//				sh 'sudo docker login -u srronak -p ${docker_hub_password_var}'
-//				sh 'sudo docker push srronak/pipeline-java:$BUILD_TAG'
+//				sh 'sudo docker login -u karmanshu -p ${docker_hub_password_var}'
+//				sh 'sudo docker push karmanshu/pipeline-java:$BUILD_TAG'
 //				}
 //			}	
 //
@@ -57,7 +57,7 @@ pipeline {
 		stage("Prod Env") {
 			steps {
 			 sshagent(['ubuntu-jenkins-slave']) {
-	                    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.126.20.221 sudo docker run  -d  -p  49153:8080  karmanshu/pipeline-java:jenkins-end-to-end-pipeline-$BUILD_TAG"
+	                    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.126.20.221 sudo docker run  -d  -p  49153:8080  karmanshu/pipeline-java:$BUILD_TAG"
 				}
 			}
 		}
